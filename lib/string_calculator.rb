@@ -8,6 +8,11 @@ class StringCalculator
 			custom_delimiter = deli_hint[2..]
 			delimiter = Regexp.escape(custom_delimiter)
 		end
-		numbers.split(/#{delimiter}/).map(&:to_i).sum
+		nums = numbers.split(/#{delimiter}/).map(&:to_i)
+		neg = nums.select{|ele| ele < 0}
+		if !neg.empty?
+			raise ArgumentError, "Negative numbers not allowed #{neg.join(',')}"
+		end
+		nums.sum
 	end
 end
