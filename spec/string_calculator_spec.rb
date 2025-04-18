@@ -16,5 +16,10 @@ RSpec.describe StringCalculator do
 			calc = StringCalculator.new
 			expect(calc.add("1,5")).to eq(6)
 		end
+
+		it "it should return sum of number for all numbers" do
+			calc = StringCalculator.new
+			expect(calc.add("1,2,3,4,5")).to eq(15)
+		end
 	end
 end
